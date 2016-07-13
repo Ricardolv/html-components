@@ -1,14 +1,17 @@
 
 <script>
   import RlvCervejarias from './card.vue'
+  import RlvModal from '../modal.vue'
 
   export default {
       components: {
-        RlvCervejarias
+        RlvCervejarias,
+        RlvModal
       },
       data () {
           return {
-            cervejarias: []
+            cervejarias: [],
+            cervejaria: {}
           }
       },
       ready () {
@@ -18,7 +21,7 @@
       },
       methods: {
         showDetails (cervejaria) {
-          
+            this.cervejaria = cervejaria.dados
         }
       }
 
@@ -28,10 +31,13 @@
 </script>
 
 <template>
-
+    <rlv-modal
+        :name="cervejaria.name"
+        :descript="cervejaria.descript">
+    </rlv-modal>
     <rlv-cervejarias
         v-for="cervejaria in cervejarias"
-        v-on:details="showDetails"
+        @details="showDetails"
         :dados="cervejaria">
     </rlv-cervejarias>
 
