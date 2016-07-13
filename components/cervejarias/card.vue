@@ -1,11 +1,17 @@
 <script>
     export default {
-      props: ['dados']
+      props: ['dados'],
+
+      methods: {
+        sendDetails() {
+            this.$dispatch('details', {dados: this.dados})
+        }
+      }
     }
 </script>
 
 <template>
-        <div class="card">
+        <div class="card" v-on:click="sendDetails">
             <h3>{{dados.name}}</h3>
             <p> {{dados.city}} / {{dados.state}}</p>
         </div>
