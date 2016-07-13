@@ -1,7 +1,11 @@
 
 <script>
+  import RlvCervejarias from './card.vue'
 
   export default {
+      components: {
+        RlvCervejarias
+      },
       data () {
           return {
             cervejarias: []
@@ -17,13 +21,12 @@
 
 </script>
 
-
-
 <template>
 
-      <h3>Componente de Cervejarias!</h3>
-      <div v-for="cervejaria in cervejarias">
-          <h3>{{cervejaria.name}}</h3>
-      </div>
+    <rlv-cervejarias
+        v-for="cervejaria in cervejarias"
+        :dados="cervejaria">
+    </rlv-cervejarias>
+
 
 </template>
